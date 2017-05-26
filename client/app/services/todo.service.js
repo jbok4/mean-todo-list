@@ -29,8 +29,12 @@ var TodoService = (function () {
     TodoService.prototype.updateTodo = function (todo) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this._http.put('/api/v1/todo/' + todo._id, JSON.stringify(todo), { headers: headers });
-        map(function (res) { return res.json(); });
+        return this._http.put('/api/v1/todo/' + todo._id, JSON.stringify(todo), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    TodoService.prototype.deleteTodo = function (id) {
+        return this._http.delete('/api/v1/todo/' + id)
+            .map(function (res) { return res.json(); });
     };
     return TodoService;
 }());
