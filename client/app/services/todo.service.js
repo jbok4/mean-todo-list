@@ -20,6 +20,12 @@ var TodoService = (function () {
         return this._http.get('api/v1/todos')
             .map(function (res) { return res.json(); });
     };
+    TodoService.prototype.saveTodo = function (todo) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this._http.post('/api/v1/todo', JSON.stringify(todo), { headers: headers });
+        map(function (res) { return res.json(); });
+    };
     return TodoService;
 }());
 TodoService = __decorate([
